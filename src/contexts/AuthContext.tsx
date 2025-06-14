@@ -1,14 +1,13 @@
-// src/contexts/AuthContext.tsx
 'use client';
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { authService } from '@/lib/auth';
-import type { LoginData, RegisterData } from '@/lib/auth';
+import { User, LoginData, UserCreate } from '@/types';
+import { api } from '@/lib/api';
 
 interface AuthContextType {
-    user: any | null;
+    user: User | null;
     loading: boolean;
     login: (credentials: LoginData) => Promise<void>;
-    signup: (userData: UserCreate) => Promise<void>;
+    signup: (userData: UserCreate) => Promise<User>;
     logout: () => void;
     updateUser: (userData: Partial<User>) => Promise<void>;
     isAuthenticated: boolean;
@@ -33,8 +32,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             try {
                 const token = localStorage.getItem('access_token');
                 if (token) {
-                    const userData = await authAPI.getMe();
-                    setUser(userData);
+                    const response = await api.get('/users/me');
+                    setUser(response.data);
                 }
             } catch (error) {
                 console.error('Auth initialization failed:', error);
@@ -50,23 +49,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const login = async (credentials: LoginData) => {
         try {
-            const response = await authAPI.login(credentials);
-
-            localStorage.setItem('access_token', response.access_token);
-            localStorage.setItem('user', JSON.stringify(response.user));
-            setUser(response.user);
+            const response = await api.post('/auth/login', credentials);
+            localStorage.setItem('access_token', response.data.access_token);
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            setUser(response.data.user);
         } catch (error) {
             console.error('Login failed:', error);
             throw error;
         }
     };
 
-    const signup = async (userData: UserCreate) => {
+    const signup = async (userData: UserCreate): Promise<User> => {
         try {
-            const newUser = await authAPI.signup(userData);
-            // After signup, you might want to automatically log them in
-            // or redirect to login page
-            return newUser;
+            const res = await api.post('/auth/register', userData);
+            return res.data; // assuming res.data is the user object
         } catch (error) {
             console.error('Signup failed:', error);
             throw error;
@@ -82,9 +78,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const updateUser = async (userData: Partial<User>) => {
         try {
-            const updatedUser = await authAPI.updateMe(userData);
-            setUser(updatedUser);
-            localStorage.setItem('user', JSON.stringify(updatedUser));
+            const response = await api.put('/users/me', userData);
+            setUser(response.data);
+            localStorage.setItem('user', JSON.stringify(response.data));
         } catch (error) {
             console.error('Update user failed:', error);
             throw error;

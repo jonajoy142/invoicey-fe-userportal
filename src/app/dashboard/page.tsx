@@ -4,7 +4,7 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { invoiceAPI, transactionAPI } from '@/lib/api';
 import { Invoice, Transaction } from '@/types';
 import Link from 'next/link';

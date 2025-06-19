@@ -5,7 +5,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 export default function DashboardLayout({
     children,
@@ -154,10 +154,10 @@ export default function DashboardLayout({
                         <div className="ml-4 flex items-center md:ml-6">
                             <div className="flex items-center space-x-2">
                                 <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${user.kyc_status === 'approved'
-                                        ? 'bg-green-100 text-green-800'
-                                        : user.kyc_status === 'pending'
-                                            ? 'bg-yellow-100 text-yellow-800'
-                                            : 'bg-red-100 text-red-800'
+                                    ? 'bg-green-100 text-green-800'
+                                    : user.kyc_status === 'pending'
+                                        ? 'bg-yellow-100 text-yellow-800'
+                                        : 'bg-red-100 text-red-800'
                                     }`}>
                                     KYC: {user.kyc_status}
                                 </span>

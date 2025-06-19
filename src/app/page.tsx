@@ -1,10 +1,23 @@
-// src/app/page.tsx
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Shield, Zap, TrendingUp, Users, Clock, DollarSign } from 'lucide-react';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ArrowRight,
+  Shield,
+  Zap,
+  TrendingUp,
+  Users,
+  Clock,
+  DollarSign,
+} from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -22,8 +35,11 @@ export default function HomePage() {
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/login">
-                <Button variant="ghost" className="text-gray-700 hover:text-blue-600">
-                  Login
+                <Button
+                  variant="ghost"
+                  className="text-gray-700 hover:text-blue-600"
+                >
+                  Logout
                 </Button>
               </Link>
               <Link href="/signup">
@@ -41,14 +57,15 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Get Instant Funding for Your{' '}
+              Get Instant Funding for Your{" "}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Invoices
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Transform your unpaid invoices into immediate cash flow with our blockchain-powered platform.
-              No waiting, no hassle — just instant liquidity.
+              Transform your unpaid invoices into immediate cash flow with our
+              blockchain-powered platform. No waiting, no hassle — just instant
+              liquidity.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/signup">
@@ -86,7 +103,8 @@ export default function HomePage() {
               Why Choose Invoicey?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Experience the future of invoice factoring with blockchain technology
+              Experience the future of invoice factoring with blockchain
+              technology
             </p>
           </div>
 
@@ -96,7 +114,9 @@ export default function HomePage() {
                 <div className="mx-auto mb-4 w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
                   <Zap className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl font-semibold">Instant Funding</CardTitle>
+                <CardTitle className="text-xl font-semibold">
+                  Instant Funding
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-center text-gray-600">
@@ -110,7 +130,9 @@ export default function HomePage() {
                 <div className="mx-auto mb-4 w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center">
                   <DollarSign className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl font-semibold">Low Fees</CardTitle>
+                <CardTitle className="text-xl font-semibold">
+                  Low Fees
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-center text-gray-600">
@@ -124,7 +146,9 @@ export default function HomePage() {
                 <div className="mx-auto mb-4 w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
                   <Shield className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl font-semibold">Blockchain Security</CardTitle>
+                <CardTitle className="text-xl font-semibold">
+                  Blockchain Security
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-center text-gray-600">
@@ -138,7 +162,9 @@ export default function HomePage() {
                 <div className="mx-auto mb-4 w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
                   <Users className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl font-semibold">Investor Network</CardTitle>
+                <CardTitle className="text-xl font-semibold">
+                  Investor Network
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-center text-gray-600">
@@ -163,7 +189,9 @@ export default function HomePage() {
               <div className="text-xl opacity-90">Happy Businesses</div>
             </div>
             <div className="text-white">
-              <div className="text-4xl md:text-5xl font-bold mb-2">&lt;5 min</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">
+                &lt;5 min
+              </div>
               <div className="text-xl opacity-90">Average Funding Time</div>
             </div>
           </div>
@@ -177,7 +205,8 @@ export default function HomePage() {
             Ready to Transform Your Cash Flow?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Join thousands of businesses already using Invoicey to unlock working capital.
+            Join thousands of businesses already using Invoicey to unlock
+            working capital.
           </p>
           <Link href="/signup">
             <Button
@@ -207,18 +236,42 @@ export default function HomePage() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Product</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Security</a></li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Security
+                  </a>
+                </li>
               </ul>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Careers
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

@@ -1,29 +1,41 @@
 // src/app/dashboard/upload/page.tsx
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/Input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
-import { invoiceAPI } from '@/lib/api';
-import { Upload, FileText, DollarSign, Calendar, User, Mail } from 'lucide-react';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/Input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { invoiceAPI } from "@/lib/api";
+import {
+  Upload,
+  FileText,
+  DollarSign,
+  Calendar,
+  User,
+  Mail,
+} from "lucide-react";
 
 const invoiceSchema = z.object({
-  invoice_number: z.string().min(1, 'Invoice number is required'),
+  invoice_number: z.string().min(1, "Invoice number is required"),
   amount: z.string().refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
-    message: 'Amount must be a positive number',
+    message: "Amount must be a positive number",
   }),
-  currency: z.string().default('USD'),
-  due_date: z.string().min(1, 'Due date is required'),
-  discount_rate: z.string().refine((val) => !isNaN(Number(val)) && Number(val) >= 0 && Number(val) <= 100, {
-    message: 'Discount rate must be between 0 and 100',
-  }),
-  customer_name: z.string().min(1, 'Customer name is required'),
-  customer_email: z.string().email('Invalid email address'),
+  currency: z.string().default("USD"),
+  due_date: z.string().min(1, "Due date is required"),
+  discount_rate: z
+    .string()
+    .refine(
+      (val) => !isNaN(Number(val)) && Number(val) >= 0 && Number(val) <= 100,
+      {
+        message: "Discount rate must be between 0 and 100",
+      },
+    ),
+  customer_name: z.string().min(1, "Customer name is required"),
+  customer_email: z.string().email("Invalid email address"),
 });
 
 type InvoiceFormData = z.infer<typeof invoiceSchema>;
@@ -41,7 +53,7 @@ export default function UploadInvoicePage() {
   } = useForm<InvoiceFormData>({
     resolver: zodResolver(invoiceSchema),
     defaultValues: {
-      currency: 'USD',
+      currency: "USD",
     },
   });
 
@@ -65,13 +77,13 @@ export default function UploadInvoicePage() {
       const response = await invoiceAPI.create(invoiceData);
 
       // Show success message or redirect
-      alert('Invoice uploaded successfully!');
-      router.push('/dashboard');
+      alert("Invoice uploaded successfully!");
+      router.push("/dashboard");
       reset();
       setUploadedFile(null);
     } catch (error) {
-      console.error('Failed to upload invoice:', error);
-      alert('Failed to upload invoice. Please try again.');
+      console.error("Failed to upload invoice:", error);
+      alert("Failed to upload invoice. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -145,7 +157,7 @@ export default function UploadInvoicePage() {
                   Invoice Number
                 </label>
                 <Input
-                  {...register('invoice_number')}
+                  {...register("invoice_number")}
                   placeholder="INV-001"
                   error={errors.invoice_number?.message}
                 />
@@ -159,7 +171,7 @@ export default function UploadInvoicePage() {
                   <div className="relative">
                     <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
-                      {...register('amount')}
+                      {...register("amount")}
                       type="number"
                       step="0.01"
                       placeholder="0.00"
@@ -174,7 +186,7 @@ export default function UploadInvoicePage() {
                     Currency
                   </label>
                   <select
-                    {...register('currency')}
+                    {...register("currency")}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >
                     <option value="USD">USD</option>
@@ -192,7 +204,7 @@ export default function UploadInvoicePage() {
                   <div className="relative">
                     <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
-                      {...register('due_date')}
+                      {...register("due_date")}
                       type="date"
                       className="pl-10"
                       error={errors.due_date?.message}
@@ -205,7 +217,7 @@ export default function UploadInvoicePage() {
                     Discount Rate (%)
                   </label>
                   <Input
-                    {...register('discount_rate')}
+                    {...register("discount_rate")}
                     type="number"
                     step="0.01"
                     placeholder="2.5"
@@ -221,7 +233,7 @@ export default function UploadInvoicePage() {
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   <Input
-                    {...register('customer_name')}
+                    {...register("customer_name")}
                     placeholder="Customer Company Ltd"
                     className="pl-10"
                     error={errors.customer_name?.message}
@@ -236,7 +248,7 @@ export default function UploadInvoicePage() {
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   <Input
-                    {...register('customer_email')}
+                    {...register("customer_email")}
                     type="email"
                     placeholder="customer@example.com"
                     className="pl-10"
@@ -246,12 +258,8 @@ export default function UploadInvoicePage() {
               </div>
 
               <div className="pt-4">
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isLoading}
-                >
-                  {isLoading ? 'Uploading...' : 'Upload Invoice'}
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                  {isLoading ? "Uploading..." : "Upload Invoice"}
                 </Button>
               </div>
             </form>

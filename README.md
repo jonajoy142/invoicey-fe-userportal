@@ -5,6 +5,7 @@ A modern React/Next.js frontend for the Invoicey blockchain invoice factoring pl
 ## 📋 Features
 
 ### Phase 1 (Completed)
+
 - ✅ User authentication (login/signup)
 - ✅ Role-based access control (Business/Investor)
 - ✅ Profile management and completion
@@ -14,6 +15,7 @@ A modern React/Next.js frontend for the Invoicey blockchain invoice factoring pl
 - ✅ Responsive design with Tailwind CSS
 
 ### Core Functionality
+
 - **Authentication**: JWT-based auth with secure token storage
 - **Invoice Management**: Upload, view, and track invoices
 - **Transaction Tracking**: Real-time transaction status updates
@@ -23,13 +25,15 @@ A modern React/Next.js frontend for the Invoicey blockchain invoice factoring pl
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 - Backend API running (FastAPI)
 
 ### Installation
 
 1. **Clone and setup**
+
 ```bash
 git clone <repository-url>
 cd invoicey-frontend
@@ -37,16 +41,19 @@ npm install
 ```
 
 2. **Environment Setup**
+
 ```bash
 cp .env.example .env.local
 ```
 
 Edit `.env.local`:
+
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
 3. **Run Development Server**
+
 ```bash
 npm run dev
 ```
@@ -98,16 +105,18 @@ src/
 ## 📊 API Integration
 
 ### Base Configuration
+
 ```typescript
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 ```
 
 ### Endpoints Used
+
 - `POST /auth/signup` - User registration
 - `POST /auth/login` - User authentication
 - `GET /users/me` - Get current user
@@ -119,6 +128,7 @@ const api = axios.create({
 ## 🎨 UI Components
 
 Custom UI components built with Tailwind CSS:
+
 - **Button**: Multiple variants and states
 - **Input/Textarea**: Form inputs with error handling
 - **Card**: Content containers
@@ -129,11 +139,13 @@ Custom UI components built with Tailwind CSS:
 ## 🔄 State Management
 
 ### Auth Context
+
 ```typescript
 const { user, login, logout, loading } = useAuth();
 ```
 
 ### Form Validation
+
 ```typescript
 const form = useForm<LoginForm>({
   resolver: zodResolver(loginSchema),
@@ -143,15 +155,18 @@ const form = useForm<LoginForm>({
 ## 🎯 Key Features
 
 ### Role-Based Dashboard
+
 - **Business Users**: Invoice upload, funding requests, transaction history
 - **Investors**: Investment opportunities, portfolio management
 
 ### Invoice Management
+
 - Drag & drop file upload
 - Real-time status tracking
 - Blockchain transaction linking
 
 ### Responsive Design
+
 - Mobile-first approach
 - Tablet and desktop optimized
 - Touch-friendly interfaces
@@ -159,11 +174,13 @@ const form = useForm<LoginForm>({
 ## 📱 Pages Overview
 
 ### Public Pages
+
 - **Home** (`/`): Landing page with features
 - **Login** (`/login`): User authentication
 - **Signup** (`/signup`): User registration
 
 ### Protected Pages
+
 - **Dashboard** (`/dashboard`): Role-based overview
 - **Upload** (`/dashboard/upload`): Invoice upload
 - **Invoices** (`/dashboard/invoices`): Invoice management
@@ -190,20 +207,23 @@ npm run type-check # TypeScript type checking
 ## 🚀 Deployment
 
 ### Build for Production
+
 ```bash
 npm run build
 npm run start
 ```
 
 ### Environment Variables
+
 Set these in your production environment:
+
 - `NEXT_PUBLIC_API_URL`: Backend API URL
 - `NODE_ENV`: production
 
 ## 🔒 Security Features
 
 - JWT token-based authentication
-- Route protection middleware  
+- Route protection middleware
 - Form validation with Zod
 - CSRF protection
 - Secure HTTP headers
@@ -213,10 +233,12 @@ Set these in your production environment:
 ### Common Issues
 
 1. **API Connection Failed**
+
    - Check `NEXT_PUBLIC_API_URL` in `.env.local`
    - Ensure backend is running
 
 2. **Authentication Issues**
+
    - Clear localStorage and try again
    - Check JWT token expiration
 
@@ -227,12 +249,14 @@ Set these in your production environment:
 ## 📚 Development Guidelines
 
 ### Code Style
+
 - Use TypeScript for type safety
 - Follow React best practices
 - Use Tailwind for styling
 - Implement proper error handling
 
 ### Component Structure
+
 ```typescript
 // Component props interface
 interface ComponentProps {
@@ -265,6 +289,7 @@ export { Component };
 ## 📞 Support
 
 For support and questions:
+
 - Check the documentation
 - Review the backend API docs
 - Contact the development team

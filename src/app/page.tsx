@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +11,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   ArrowRight,
   Shield,
   Zap,
@@ -18,8 +24,13 @@ import {
   Clock,
   DollarSign,
 } from "lucide-react";
+import LoginForm from "@/components/forms/LoginForm";
+import SignupForm from "@/components/forms/SignupForm";
 
 export default function HomePage() {
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignup, setOpenSignup] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Navigation */}
@@ -34,19 +45,37 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Link href="/login">
+              {/* <Dialog open={openLogin} onOpenChange={setOpenLogin}>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="text-gray-700 hover:text-blue-600"
+                  >
+                    Login
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <LoginForm />
+                </DialogContent>
+              </Dialog> */}
+              <Link href="/auth/login">
                 <Button
                   variant="ghost"
                   className="text-gray-700 hover:text-blue-600"
                 >
-                  Logout
+                  Login
                 </Button>
               </Link>
-              <Link href="/signup">
-                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
-                  Get Started
-                </Button>
-              </Link>
+              <Dialog open={openSignup} onOpenChange={setOpenSignup}>
+                <DialogTrigger asChild>
+                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                    Get Started
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <SignupForm />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
@@ -57,7 +86,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Get Instant Funding for Your{" "}
+              Instant Funding for Your{" "}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Invoices
               </span>
@@ -68,15 +97,20 @@ export default function HomePage() {
               liquidity.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/signup">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg"
-                >
-                  Start Factoring
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
+              <Dialog open={openSignup} onOpenChange={setOpenSignup}>
+                <DialogTrigger asChild>
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg"
+                  >
+                    Start Factoring
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <SignupForm />
+                </DialogContent>
+              </Dialog>
               <Button
                 variant="outline"
                 size="lg"
@@ -208,15 +242,20 @@ export default function HomePage() {
             Join thousands of businesses already using Invoicey to unlock
             working capital.
           </p>
-          <Link href="/signup">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg"
-            >
-              Get Started Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
+          <Dialog open={openSignup} onOpenChange={setOpenSignup}>
+            <DialogTrigger asChild>
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg"
+              >
+                Get Started Now
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-md">
+              <SignupForm />
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
 

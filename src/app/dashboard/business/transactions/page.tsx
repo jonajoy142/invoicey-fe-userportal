@@ -2,9 +2,9 @@
 "use client";
 
 import { useState } from "react";
-import Input from "@/components/ui/input";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Textarea from "@/components/ui/textArea";
+import { Textarea } from "@/components/ui/textArea";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { Upload } from "lucide-react";

@@ -28,33 +28,33 @@ export default function UploadInvoicePage() {
 
     return (
         <div className="max-w-3xl mx-auto py-10 px-4">
-            <h1 className="text-3xl font-bold mb-6 text-gray-900">
+            <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 Upload New Invoice
             </h1>
 
             <div className="space-y-5">
                 {/* File Upload */}
                 <div>
-                    <label className="block text-sm font-medium text-gray-900">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Invoice File (PDF/Image)
                     </label>
                     <Input
                         type="file"
                         accept="application/pdf,image/*"
-                        className="text-gray-900 file:text-gray-900"
+                        className="text-gray-900 dark:text-white file:text-gray-900 file:dark:text-white"
                         onChange={(e) => setInvoiceFile(e.target.files?.[0] || null)}
                     />
                 </div>
 
                 {/* Amount */}
                 <div>
-                    <label className="block text-sm font-medium text-gray-900">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Amount
                     </label>
                     <Input
                         type="number"
                         placeholder="$1000"
-                        className="text-gray-900 placeholder:text-gray-500"
+                        className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                     />
@@ -62,13 +62,13 @@ export default function UploadInvoicePage() {
 
                 {/* Description */}
                 <div>
-                    <label className="block text-sm font-medium text-gray-900">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Description
                     </label>
                     <Textarea
                         rows={3}
                         placeholder="Work completed for X client"
-                        className="text-gray-900 placeholder:text-gray-500"
+                        className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
@@ -76,7 +76,7 @@ export default function UploadInvoicePage() {
 
                 {/* Due Date */}
                 <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Due Date
                     </label>
                     <Calendar selected={dueDate} onSelect={setDueDate} />

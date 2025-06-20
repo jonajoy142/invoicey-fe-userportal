@@ -190,7 +190,7 @@ export default function SignupPage() {
                                 <p className="text-sm text-gray-600">
                                     Already have an account?{" "}
                                     <Link
-                                        href="/login"
+                                        href="/dashboard/business" // /login
                                         className="font-medium text-blue-600 hover:text-blue-500"
                                     >
                                         Sign in
@@ -201,6 +201,6 @@ export default function SignupPage() {
                     </CardContent>
                 </Card>
             </div>
-        </div>
+        </div >
     );
 }

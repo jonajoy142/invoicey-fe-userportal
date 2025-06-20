@@ -1,0 +1,53 @@
+// // src/middleware.ts
+// import { NextResponse } from "next/server";
+// import type { NextRequest } from "next/server";
+
+// export function middleware(request: NextRequest) {
+//   const token = request.cookies.get("token")?.value;
+//   const { pathname } = request.nextUrl;
+
+//   // Public routes that don't require authentication
+//   const publicRoutes = [
+//     "/",
+//     "/auth/login",
+//     "/auth/signup",
+//     "/dashboard/business"
+//   ];
+
+//   const isPublicRoute = publicRoutes.some(
+//     (route) => pathname === route || pathname.startsWith(route + "/")
+//   );
+
+//   // Allow access to public routes
+//   if (!token && !isPublicRoute) {
+//     return NextResponse.redirect(new URL("/auth/login", request.url));
+//   }
+
+//   // Redirect authenticated users away from login/signup
+//   if (token && (pathname === "/auth/login" || pathname === "/auth/signup")) {
+//     return NextResponse.redirect(new URL("/dashboard", request.url));
+//   }
+
+//   return NextResponse.next();
+// }
+
+// export const config = {
+//   matcher: [
+//     // Match all paths except these:
+//     "/((?!api|_next/static|_next/image|favicon.ico).*)",
+//   ],
+// };
+
+
+// middleware.ts
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export function middleware(request: NextRequest) {
+  // ✅ Always allow access during development — disable auth
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+};
